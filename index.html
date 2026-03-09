@@ -1624,7 +1624,7 @@ document.getElementById('btn-back-join').addEventListener('click',()=>{
   document.getElementById('net-status-join').textContent='';
 });
 document.getElementById('btn-do-join').addEventListener('click',()=>{ startJoin(); });
-document.getElementById('join-code-input').addEventListener('keydown', e=>{ if(e.key==='Enter') startJoin(); });
+document.getElementById('join-code-input').addEventListener('keydown', e=>{ e.stopPropagation(); if(e.key==='Enter') startJoin(); });
 document.getElementById('host-code').addEventListener('click',()=>{
   const code=document.getElementById('host-code').textContent;
   navigator.clipboard.writeText(code).then(()=>{
