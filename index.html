@@ -868,6 +868,8 @@ function buildStage(){
 // ═══════════════════════════════════════════════════════
 const keys = {};
 document.addEventListener('keydown', e=>{
+  // Ne pas capturer les touches si on est dans un champ texte
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   keys[e.code]=true;
   myInputState[e.code]=true;
   if(state==='game') handleGameKey(e);
@@ -886,6 +888,7 @@ const netLocalKeys = {left:'KeyQ',right:'KeyD',up:'Space',down:'KeyS',att:'KeyA'
 
 const justPressed = {};
 document.addEventListener('keydown', e=>{
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   justPressed[e.code]=true;
   myJustPressedNet[e.code]=true;
 });
