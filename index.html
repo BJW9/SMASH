@@ -991,7 +991,7 @@ function updatePlayer(p, dt){
   }
 
   // Movement (if not in hitstun or locked)
-  const km = getKeysForPlayer(p) || (p.id===1?p1keys:p2keys);
+  const km = getKeysForPlayer(p);
   const held = getHeldForPlayer(p);
   if(p.hitstun===0 && p.actionLock===0){
     if(held[km.left])  { p.vx -= 1.2; p.facing=-1; }
