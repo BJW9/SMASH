@@ -928,12 +928,10 @@ function handleGameKey(e){
   if(netMode === 'local'){
     processPlayerInput(players[0], p1keys, keys, jp);
     processPlayerInput(players[1], p2keys, keys, jp);
-  } else {
-    // Chaque joueur gère ses propres inputs locaux
-    for(const p of players){
-      const km = getKeysForPlayer(p);
-      if(km) processPlayerInput(p, km, keys, jp);
-    }
+  } else if(netMode === 'host'){
+    processPlayerInput(players[0], netLocalKeys, keys, jp);
+  } else if(netMode === 'guest'){
+    processPlayerInput(players[1], netLocalKeys, keys, jp);
   }
 }
 
