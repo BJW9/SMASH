@@ -904,11 +904,9 @@ function getKeysForPlayer(p){
   if(netMode === 'local'){
     return p.id === 1 ? p1keys : p2keys;
   }
-  // En ligne : chaque joueur contrôle son perso avec ses propres touches
-  // Host = P1, Guest = P2
-  if(netMode === 'host') return p.id === 1 ? netLocalKeys : null;
-  if(netMode === 'guest') return p.id === 2 ? netLocalKeys : null;
-  return null;
+  if(netMode === 'host') return p.id === 1 ? netLocalKeys : netLocalKeys;
+  if(netMode === 'guest') return p.id === 2 ? netLocalKeys : netLocalKeys;
+  return netLocalKeys;
 }
 
 function getHeldForPlayer(p){
